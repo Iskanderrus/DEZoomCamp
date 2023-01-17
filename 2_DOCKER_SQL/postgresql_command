@@ -50,3 +50,14 @@ sudo docker run -it \
     dpage/pgadmin4
 
 # use localhost:8080 in the browser to access the pgAdmin
+
+URL = 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet'
+# getting data in one step:
+python ingest_data.py \
+    --user=root \
+    --password=root \
+    --host=localhost \
+    --port=5432 \
+    --db=ny_taxi \
+    --table_name=yellow_taxi_data \
+    --url=${URL}
