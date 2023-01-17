@@ -12,3 +12,6 @@ sudo docker run -it \
 
 pgcli -h localhost -p 5432 -u root -d ny_taxi
 
+# downloading the dataset:
+
+wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet
