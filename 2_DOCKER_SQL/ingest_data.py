@@ -13,7 +13,7 @@ def main(params):
     table_name = params.table_name
     url = params.url
 
-    parquet_name = 'yellow_tripdata_2021-01.parquet'
+    parquet_name = 'output.parquet'
     # download the file:
     os.system(f"wget {url} -O {parquet_name}")
     # create an engine to connect to the database:
