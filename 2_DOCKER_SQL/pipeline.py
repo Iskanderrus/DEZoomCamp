@@ -1,5 +1,7 @@
+import sys
 import pandas as pd
 
-# import .csv file, make necessary data cleaning and visualizations
+print(f'system arguments: {sys.argv}')
+day = sys.argv[1]
 
-print('job finished successfully')
+print(f'job finished successfully for day = {day}')
