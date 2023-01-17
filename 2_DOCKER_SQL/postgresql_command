@@ -8,10 +8,10 @@ sudo docker run -it \
     -p 5432:5432 \
     postgres:13
 
-# after db setup use:
+# after db setup to access the DB use:
 
 pgcli -h localhost -p 5432 -u root -d ny_taxi
 
-# downloading the dataset:
+# downloading the dataset... see jupyter notebook
 
-wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet
+
