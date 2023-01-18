@@ -17,7 +17,7 @@ def main(params):
     # download the file:
     os.system(f"wget {url} -O {parquet_name}")
     # create an engine to connect to the database:
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}', pool_pre_ping=True)
 
     df = pd.read_parquet(parquet_name,
                          engine='pyarrow')
@@ -26,14 +26,14 @@ def main(params):
                                con=engine))
 
     # pulling the df.columns to database:
-    df.head(0).to_sql(name=table_name,
-                      con=engine,
-                      if_exists='replace')
+    # df.head(0).to_sql(name=table_name,
+    #                   con=engine,
+    #                   if_exists='replace')
 
     # pulling the entire df to database:
     df.to_sql(name='yellow_taxi_data',
               con=engine,
-              if_exists='append')
+              if_exists='replace')
 
 
 if __name__ == '__main__':
