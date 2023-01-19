@@ -5,6 +5,6 @@ RUN pip install pandas sqlalchemy psycopg2 pyarrow
 
 WORKDIR /app
 
-COPY parquet_ingest_data.py ingest_data.py
+COPY csv_ingest_data.py csv_ingest_data.py
 
-ENTRYPOINT [ "python", "ingest_data.py" ]
+ENTRYPOINT [ "python", "csv_ingest_data.py" ]

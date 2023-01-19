@@ -75,5 +75,5 @@ sudo docker run -it \
     --host=pg-database \
     --port=5432 \
     --db=ny_taxi \
-    --table_name=yellow_taxi_trips \
+    --table_name=yellow_taxi_data \
     --url=${URL}
