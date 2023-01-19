@@ -53,7 +53,8 @@ sudo docker run -it \
 
 # getting data in one step:
 URL="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet"
-python ingest_data.py \
+URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+python CSV_ingest_data.py \
     --user=root \
     --password=root \
     --host=localhost \
