@@ -1,0 +1,39 @@
+Question 1. Knowing docker tags
+terminal command: docker --help
+terminal command: docker build --help
+
+result: --iidfile string
+
+
+Question 2. Understanding docker first run
+terminal command: docker run -it python:3.9 /bin/bash
+terminal command: pip list
+
+result:
+Package    Version
+---------- -------
+pip        22.0.4
+setuptools 58.1.0
+wheel      0.38.4
+
+3
+
+Question 3. Count records
+terminal command: 
+
+
+Question 4. Largest trip for each day
+terminal command: 
+
+
+Question 5. The number of passengers
+terminal command: 
+
+
+Question 6. Largest tip
+terminal command: 
+
+
+
+
+
