@@ -19,21 +19,56 @@ wheel      0.38.4
 3
 
 Question 3. Count records
-terminal command: 
+query: 
+SELECT count(1) 
+FROM yellow_taxi_data
+WHERE CAST(lpep_pickup_datetime as DATE) = '2019-01-15' 
+and CAST(lpep_dropoff_datetime as DATE) = '2019-01-15';
 
+result: 20530
 
 Question 4. Largest trip for each day
-terminal command: 
+query:
+SELECT CAST(lpep_pickup_datetime as DATE)
+FROM yellow_taxi_data
+ORDER BY trip_distance DESC
+LIMIT 1; 
 
+result: 2019-01-15
 
 Question 5. The number of passengers
-terminal command: 
+query:
+SELECT passenger_count, 
+	COUNT(index)
+FROM yellow_taxi_data
+WHERE ((passenger_count = 2) or (passenger_count = 3))
+and CAST(lpep_pickup_datetime as DATE) = '2019-01-01'
+GROUP BY passenger_count
+ORDER BY passenger_count ASC;
 
+result:
+2:	1282, 3:	254
 
 Question 6. Largest tip
-terminal command: 
+query: 
+SELECT taxi_zones."Zone"
+FROM taxi_zones
+WHERE taxi_zones."LocationID" in
+(
+	SELECT yellow_taxi_data."DOLocationID"
+	FROM yellow_taxi_data
+	WHERE yellow_taxi_data."tip_amount" in 
+	(
+		SELECT max(yellow_taxi_data."tip_amount")
+		FROM yellow_taxi_data
+		WHERE yellow_taxi_data."PULocationID" in 
+		(
+			SELECT taxi_zones."LocationID"
+			FROM taxi_zones
+			WHERE taxi_zones."Zone" = 'Astoria'
+		)
+	)
+)
 
-
-
-
-
+result:
+"Long Island City/Queens Plaza"
