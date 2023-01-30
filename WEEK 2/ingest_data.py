@@ -4,6 +4,7 @@ import pandas as pd
 from prefect import flow, task
 from prefect.tasks import task_input_hash
 from sqlalchemy import create_engine
+from prefect_sqlalchemy import SqlAlchemyConnector
 
 
 @task(
@@ -59,7 +60,7 @@ def transform_data(df):
     log_prints=True,
     retries=3
 )
-def ingest_data(user, password, host, port, db, table_name, df):
+def ingest_data(table_name, df):
     """
     function to ingest transformed dataframe into the database
     :param user: user as per DB settings
@@ -70,43 +71,28 @@ def ingest_data(user, password, host, port, db, table_name, df):
     :param table_name: table name
     :param df: dataframe to ingest into the database
     """
-    postgres_url = f'postgresql://{user}:{password}@{host}:{port}/{db}'
+    connection_block = SqlAlchemyConnector.load('sqlconnection')
+    with connection_block.get_connection(begin=False) as engine:
+        df.head(0).to_sql(
+            name=table_name,
+            con=engine,
+            if_exists='replace'
+        )
 
-    engine = create_engine(
-        postgres_url,
-        pool_pre_ping=True
-    )
-
-    df.head(0).to_sql(
-        name=table_name,
-        con=engine,
-        if_exists='replace'
-    )
-
-    df.to_sql(
-        name=table_name,
-        con=engine,
-        if_exists='append'
-    )
+        df.to_sql(
+            name=table_name,
+            con=engine,
+            if_exists='append'
+        )
 
 
 @flow(name="Ingest Flow")
 def main():
-    user = 'root'
-    password = 'root'
-    host = 'localhost'
-    port = '5432'
-    db = 'ny_taxi'
     table_name = 'yellow_taxi_trips'
     csv_url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz'
     raw_data = extract_data(url=csv_url)
     data = transform_data(raw_data)
     ingest_data(
-        user=user,
-        password=password,
-        host=host,
-        port=port,
-        db=db,
         table_name=table_name,
         df=data
     )
