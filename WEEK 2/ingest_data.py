@@ -1,9 +1,9 @@
 import os
 from datetime import timedelta
+
 import pandas as pd
 from prefect import flow, task
 from prefect.tasks import task_input_hash
-from sqlalchemy import create_engine
 from prefect_sqlalchemy import SqlAlchemyConnector
 
 
@@ -63,11 +63,6 @@ def transform_data(df):
 def ingest_data(table_name, df):
     """
     function to ingest transformed dataframe into the database
-    :param user: user as per DB settings
-    :param password: password as per DB settings
-    :param host: host of the database
-    :param port: port to connect with the database
-    :param db: database name
     :param table_name: table name
     :param df: dataframe to ingest into the database
     """
