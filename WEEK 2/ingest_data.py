@@ -17,7 +17,7 @@ def ingest_data(user, password, host, port, db, table_name, url):
 
     engine = create_engine(postgres_url)
 
-    df_iter = pd.read_csv(csv_name, iterator=True, chunks=100000)
+    df_iter = pd.read_csv(csv_name, iterator=True, chunksize=100000)
 
     df = next(df_iter)
 
