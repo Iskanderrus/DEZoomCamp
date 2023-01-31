@@ -4,7 +4,7 @@ from prefect import flow, task
 from prefect_gcp.cloud_storage import GcsBucket
 
 @task()
-def fetch(dataset_url) => pd.DataFrame: 
+def fetch(dataset_url): 
     """
     Read taxi data from web to Pandas DataFrame
     """
@@ -13,7 +13,7 @@ def fetch(dataset_url) => pd.DataFrame:
     return df 
 
 @flow()
-def etl_web_to_gcs() => None: 
+def etl_web_to_gcs(): 
     """
     The main ETL function
     """
