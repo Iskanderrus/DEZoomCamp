@@ -1,5 +1,5 @@
 from pathlib import Path
-import pansa as pd
+import pandas as pd
 from prefect import flow, task
 from prefect_gcp.cloud_storage import GcsBucket
 
