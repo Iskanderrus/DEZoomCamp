@@ -2,14 +2,33 @@ from pathlib import Path
 import pandas as pd
 from prefect import flow, task
 from prefect_gcp.cloud_storage import GcsBucket
+from random import randint 
 
-@task()
+
+@task(retries=3)
 def fetch(dataset_url): 
     """
     Read taxi data from web to Pandas DataFrame
     """
 
-    df = pd.read_csv(dataset_url)
+    # if randint(0, 1) > 0: 
+    #     raise Exception
+
+    df = pd.read_csv(dataset_url, low_memory=True)
+
+    return df 
+
+
+@task(log_prints=True)
+def clean(df = pd.DataFrame) -> pd.DataFrame:
+    """
+    Fix some dtype issues
+    """ 
+    df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
+    df['tpep_dropoff_datetime'] = pd.to_datetime(df['tpep_dropoff_datetime'])
+    print(df.head(2))
+    print(f'columns: {df.dtypes}')
+    print(f'shape of the dataframe: \n\t\t\t\t\t\t\t\t\t\trows:{df.shape[0]}\n\t\t\t\t\t\t\t\t\t\tcolumns:{df.shape[1]}')
     return df 
 
 @flow()
@@ -25,6 +44,7 @@ def etl_web_to_gcs():
     dataset_url = f'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz'
 
     df = fetch(dataset_url)
+    cleaned_df = clean(df)
 
 if __name__ == '__main__': 
     etl_web_to_gcs()
