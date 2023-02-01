@@ -80,7 +80,7 @@ def etl_parent_flow(
 
 
 if __name__ == '__main__': 
-    color = input('Please input color:\n')
-    months = [eval(i) for i in list(input('What months are you interested in\nprovide coma separated values:\n').split(","))] 
-    year = int(input('What year are you interested in: \n'))
+    color = 'yellow'
+    months = [1, 2, 3] 
+    year = 2021
     etl_parent_flow(color=color, year=year, months=months)
