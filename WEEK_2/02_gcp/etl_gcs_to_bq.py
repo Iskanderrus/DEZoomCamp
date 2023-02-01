@@ -21,6 +21,20 @@ def transform(path: Path) -> pd.DataFrame:
     print(f'post: missing passenger count values: {df.passenger_count.isna().sum()}')
     return df
 
+
+@task()
+def write_bq(df: pd.DataFrame) -> None: 
+    '''Write dataframe into the BigQuery'''
+
+    gcp_credentials_block = GcpCredentials.load("dez-gcp-creds")
+    df.to_gbq(
+        destination_table='de_zoomcamp.rides', 
+        project_id='strange-calling-375320', 
+        credentials=gcp_credentials_block.get_credentials_from_service_account(), 
+        chunksize=500_000, 
+        if_exists='append'
+    )
+
 @flow()
 def etl_gcs_to_bq(): 
     """
@@ -32,6 +46,7 @@ def etl_gcs_to_bq():
 
     path = extract_from_gcs(color, year, month)
     df = transform(path)
+    write_bq(df)
 
 if __name__ == '__main__': 
     etl_gcs_to_bq()
