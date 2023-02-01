@@ -70,17 +70,17 @@ def etl_web_to_gcs(color: str, year: int, month: int):
 
 @flow()
 def etl_parent_flow(
-    month:list[int] = [1, 2], 
+    months:list[int] = [1, 2], 
     year:int = 2021, 
     color:str = 'yellow'
 ): 
-    for month in month: 
+    for month in months: 
         etl_web_to_gcs(color=color, year=year, month=month)
 
 
 
 if __name__ == '__main__': 
-    color = 'yellow'
-    month = [1, 2, 3, 4]
-    year = 2021
-    etl_parent_flow(color=color, year=year, month=month)
+    color = input('Please input color:\n')
+    months = [eval(i) for i in list(input('What months are you interested in\nprovide coma separated values:\n').split(","))] 
+    year = int(input('What year are you interested in: \n'))
+    etl_parent_flow(color=color, year=year, months=months)
