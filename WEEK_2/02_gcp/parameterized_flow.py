@@ -40,14 +40,11 @@ def clean(df=pd.DataFrame) -> pd.DataFrame:
 @task()
 def write_local(df: pd.DataFrame, color: str, dataset_file: str) -> Path:
     """Write DataFrame out as parquet file"""
-    path = Path(f'WEEK_2/02_gcp/data/{color}/')
-    os.mkdir(path)
-    print(path)
-    path = Path(f'WEEK_2/02_gcp/data/{color}/')
-    os.mkdir(path)
-    print(path)
-    path = Path(f'WEEK_2/02_gcp/data/{color}/{dataset_file}.parquet')
-
+    parent_dir = f'WEEK_2/02_gcp/data/{color}'
+    if os.path.exists(parent_dir): 
+        path = os.path.join(parent_dir, f'{dataset_file}.parquet')
+    else: 
+        path = Path(os.path.join(parent_dir, f'{dataset_file}.parquet')).mkdir(parents=True, exist_ok=True)
     df.to_parquet(path, compression='gzip')
     return path
 
@@ -75,7 +72,7 @@ def etl_web_to_gcs(color: str, year: int, month: int):
     df = fetch(dataset_url)
     cleaned_df = clean(df)
     path = write_local(cleaned_df, color, dataset_file)
-    write_gcs(path)
+    #write_gcs(path)
 
 
 @flow()
