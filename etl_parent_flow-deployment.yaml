@@ -3,25 +3,13 @@
 ###
 name: Parameterized ETL
 description: null
-version: fb7acbeba75d7add9ffd4602d96cadfb
+version: f78740939c1c0479eefee87483d9c434
 # The work queue that will handle this deployment's runs
 work_queue_name: default
 tags: []
-parameters:
-  color: yellow
-  months:
-  - 1
-  - 2
-  - 3
-  year: 2022
+parameters: {}
 schedule: null
 infra_overrides: {}
-
-###
-### DO NOT EDIT BELOW THIS LINE
-###
-flow_name: etl-parent-flow
-manifest_path: null
 infrastructure:
   type: process
   env: {}
@@ -30,13 +18,16 @@ infrastructure:
   command: null
   stream_output: true
   working_dir: null
-  _block_document_id: f8385b36-2f78-4ab8-aa2c-f797bfbfb3de
-  _block_document_name: anonymous-4ca4457c-4e41-486b-a1af-1036f7e8aad2
-  _is_anonymous: true
   block_type_slug: process
   _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-parent-flow
+manifest_path: null
 storage: null
-path: /home/alex/DEZoomCamp
+path: /home/alex/VisualStudioCode/DEZoomCamp
 entrypoint: WEEK_2/02_gcp/parameterized_flow.py:etl_parent_flow
 parameter_openapi_schema:
   title: Parameters
