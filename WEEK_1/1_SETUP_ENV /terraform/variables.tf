@@ -4,7 +4,7 @@ locals {
 
 variable "project" {
   description = "Your GCP Project ID"
-  default = "strange-calling-375320"
+  default = "sanguine-form-376720"
   type = string
 }
 
