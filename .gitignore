@@ -5,3 +5,4 @@ WEEK_2/02_gcp/data/yellow/yellow_tripdata_2021-03.parquet
 WEEK_2/02_gcp/test.py
 WEEK_2/02_gcp/data/yellow/yellow_tripdata_2021-04.parquet
 WEEK_1/2_DOCKER_SQL/yellow_tripdata_2021-01.csv.gz.2
+WEEK_2/yellow_tripdata_2021-01.csv.gz
