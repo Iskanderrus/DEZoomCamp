@@ -7,7 +7,11 @@ from prefect.tasks import task_input_hash
 from datetime import timedelta
 
 
-@task(retries=3, cache_key_fn=task_input_hash, cache_expiration=timedelta(days=1))
+@task(
+    retries=3, 
+    cache_key_fn=task_input_hash, 
+    cache_expiration=timedelta(days=0.1)
+    )
 def fetch(dataset_url): 
     """
     Read taxi data from web to Pandas DataFrame
@@ -77,6 +81,6 @@ def etl_parent_flow(
 
 if __name__ == '__main__': 
     color = 'yellow'
-    months = [1, 2, 3, 4]
+    months = [2, 3, 4]
     year = 2021
     etl_parent_flow(months=months, color=color, year=year)
