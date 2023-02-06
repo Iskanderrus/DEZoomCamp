@@ -29,7 +29,7 @@ def write_bq(df: pd.DataFrame) -> None:
     gcp_credentials_block = GcpCredentials.load("dez-gcp-creds")
     df.to_gbq(
         destination_table='de_zoomcamp.rides', 
-        project_id='strange-calling-375320', 
+        project_id='sanguine-form-376720', 
         credentials=gcp_credentials_block.get_credentials_from_service_account(), 
         chunksize=500_000, 
         if_exists='append'
