@@ -20,7 +20,9 @@ def fetch(dataset_url):
     # if randint(0, 1) > 0: 
     #     raise Exception
 
-    df = pd.read_csv(dataset_url, low_memory=True)
+    df = pd.read_csv(dataset_url,
+                     compression='gzip',
+                     low_memory=True)
 
     return df 
 
@@ -30,8 +32,8 @@ def clean(df = pd.DataFrame) -> pd.DataFrame:
     """
     Fix some dtype issues
     """ 
-    df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
-    df['tpep_dropoff_datetime'] = pd.to_datetime(df['tpep_dropoff_datetime'])
+    df['pickup_datetime'] = pd.to_datetime(df['pickup_datetime'])
+    df['dropOff_datetime'] = pd.to_datetime(df['dropOff_datetime'])
     print(df.head(2))
     print(f'columns: {df.dtypes}')
     print(f'shape of the dataframe:\n\t\t\t\t\t\t\t\t\t\trows:{df.shape[0]}\n\t\t\t\t\t\t\t\t\t\tcolumns:{df.shape[1]}')
@@ -80,7 +82,7 @@ def etl_parent_flow(
         etl_web_to_gcs(month=month, year=year, color=color)
 
 if __name__ == '__main__': 
-    color = 'yellow'
-    months = [1]
-    year = 2021
+    color = 'fhv'
+    months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    year = 2019
     etl_parent_flow(months=months, color=color, year=year)
