@@ -10,11 +10,11 @@ def fetch(dataset_url):
     """
     Read taxi data from web to Pandas DataFrame
     """
-
-    # if randint(0, 1) > 0: 
-    #     raise Exception
-
-    df = pd.read_csv(dataset_url, low_memory=True)
+    df = pd.read_csv(dataset_url, 
+                    compression='gzip',
+                    #  error_bad_lines=False, 
+                    #  low_memory=True
+                     )
     print('Data loaded into pandas')
     print(f"DF Shape: {df.shape}")
     print(f"DF Columns are: {df.columns}")
