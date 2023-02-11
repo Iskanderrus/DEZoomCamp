@@ -9,3 +9,15 @@ WEEK_2/yellow_tripdata_2021-01.csv.gz
 WEEK_2/02_gcp/tests.py
 WEEK_2/02_gcp/S&P500_companies.csv
 WEEK_3/Getting_file+EDA.ipynb
+WEEK_3/data/fhv/fhv_tripdata_2019-01.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-03.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-02.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-04.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-05.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-06.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-07.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-08.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-09.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-10.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-11.parquet
+WEEK_3/data/fhv/fhv_tripdata_2019-12.parquet
