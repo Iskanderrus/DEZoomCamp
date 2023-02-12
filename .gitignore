@@ -23,3 +23,15 @@ WEEK_3/data/fhv/fhv_tripdata_2019-11.parquet
 WEEK_3/data/fhv/fhv_tripdata_2019-12.parquet
 WEEK_3/data/data/fhv/fhv_tripdata_2019-01.parquet
 WEEK_3/data/fhv/fhv_tripdata_2019-01.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-02.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-03.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-04.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-05.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-06.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-07.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-08.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-09.csv
+.gitignore
+WEEK_3/data/fhv/fhv_tripdata_2019-10.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-11.csv
+WEEK_3/data/fhv/fhv_tripdata_2019-12.csv
