@@ -32,8 +32,9 @@ def clean(df = pd.DataFrame) -> pd.DataFrame:
     """
     Fix some dtype issues
     """ 
-    df['pickup_datetime'] = pd.to_datetime(df['pickup_datetime'])
-    df['dropOff_datetime'] = pd.to_datetime(df['dropOff_datetime'])
+    datetime_cols = [col for col in df.columns if 'datetime' in col]
+    for column in datetime_cols:
+        df[column] = pd.to_datetime(df[column])
     print(df.head(2))
     print(f'columns: {df.dtypes}')
     print(f'shape of the dataframe:\n\t\t\t\t\t\t\t\t\t\trows:{df.shape[0]}\n\t\t\t\t\t\t\t\t\t\tcolumns:{df.shape[1]}')
@@ -83,6 +84,6 @@ def etl_parent_flow(
 
 if __name__ == '__main__': 
     color = 'yellow'
-    months = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    months = [10, 11, 12]
     year = 2019
     etl_parent_flow(months=months, color=color, year=year)
