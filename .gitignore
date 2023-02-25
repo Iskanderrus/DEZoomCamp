@@ -16,3 +16,8 @@ WEEK_3/data/yellow/yellow_tripdata_2019-09.csv
 WEEK_3/data/yellow/yellow_tripdata_2019-10.csv
 WEEK_3/data/yellow/yellow_tripdata_2019-11.csv
 WEEK_3/data/yellow/yellow_tripdata_2019-12.csv
+WEEK_5/taxi+_zone_lookup.csv
+WEEK_5/zones/_SUCCESS
+WEEK_5/zones/._SUCCESS.crc
+WEEK_5/zones/.part-00000-fe935c61-ba4c-433e-bc18-b0e63cdc5f52-c000.snappy.parquet.crc
+WEEK_5/zones/part-00000-fe935c61-ba4c-433e-bc18-b0e63cdc5f52-c000.snappy.parquet
