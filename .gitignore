@@ -256,7 +256,6 @@ WEEK_5/data/unified/yellow/2019/10/part-00000-a3e8d57f-7631-4bbc-9996-8d9f4c5ee3
 WEEK_5/data/unified/yellow/2019/10/part-00001-a3e8d57f-7631-4bbc-9996-8d9f4c5ee3c0-c000.snappy.parquet
 WEEK_5/data/unified/yellow/2019/10/part-00002-a3e8d57f-7631-4bbc-9996-8d9f4c5ee3c0-c000.snappy.parquet
 WEEK_5/data/unified/yellow/2019/10/part-00003-a3e8d57f-7631-4bbc-9996-8d9f4c5ee3c0-c000.snappy.parquet
-.gitignore
 WEEK_5/data/unified/yellow/2019/11/_SUCCESS
 WEEK_5/data/unified/yellow/2019/11/._SUCCESS.crc
 WEEK_5/data/unified/yellow/2019/11/.part-00000-0a6c4d24-30d6-4314-a985-78ff1965cfd5-c000.snappy.parquet.crc
@@ -518,7 +517,6 @@ WEEK_5/data/unified/yellow/2021/12/part-00001-6f018862-c43b-45a6-b564-4a97f24024
 WEEK_5/data/unified/yellow/2021/12/part-00002-6f018862-c43b-45a6-b564-4a97f240245c-c000.snappy.parquet
 WEEK_5/data/unified/yellow/2021/12/part-00003-6f018862-c43b-45a6-b564-4a97f240245c-c000.snappy.parquet
 WEEK_5/data/unified/yellow/2021/01/_SUCCESS
-.gitignore
 WEEK_5/data/unified/green/2019/01/._SUCCESS.crc
 WEEK_5/data/unified/green/2019/01/.part-00000-cff98310-48ac-4192-876c-2bfaf1781574-c000.snappy.parquet.crc
 WEEK_5/data/unified/green/2019/01/.part-00001-cff98310-48ac-4192-876c-2bfaf1781574-c000.snappy.parquet.crc
@@ -950,7 +948,6 @@ WEEK_5/data/unified/green/2021/12/part-00000-fcb3ec1b-0af4-48e8-8944-eb9e1d51864
 WEEK_5/data/unified/green/2021/12/part-00001-fcb3ec1b-0af4-48e8-8944-eb9e1d518645-c000.snappy.parquet
 WEEK_5/data/unified/green/2021/12/part-00002-fcb3ec1b-0af4-48e8-8944-eb9e1d518645-c000.snappy.parquet
 WEEK_5/data/unified/green/2021/12/part-00003-fcb3ec1b-0af4-48e8-8944-eb9e1d518645-c000.snappy.parquet
-.gitignore
 WEEK_5/data/raw/green/2019/03/green_tripdata_2019-03.parquet
 WEEK_5/data/raw/green/2019/04/green_tripdata_2019-04.parquet
 WEEK_5/data/raw/green/2019/05/green_tripdata_2019-05.parquet
@@ -1142,3 +1139,7 @@ WEEK_5/data/unified/green/2021/12/part-00001-fcb3ec1b-0af4-48e8-8944-eb9e1d51864
 WEEK_5/data/unified/green/2021/12/part-00002-fcb3ec1b-0af4-48e8-8944-eb9e1d518645-c000.snappy.parquet
 WEEK_5/data/unified/green/2021/12/part-00003-fcb3ec1b-0af4-48e8-8944-eb9e1d518645-c000.snappy.parquet
 WEEK_5/data/raw/green/2019/02/green_tripdata_2019-02.parquet
+WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/part-00000-9072b638-e55e-43ab-abd9-e97e010f11cd-c000.snappy.parquet
+WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/.part-00000-9072b638-e55e-43ab-abd9-e97e010f11cd-c000.snappy.parquet.crc
+WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/._SUCCESS.crc
+WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/_SUCCESS
