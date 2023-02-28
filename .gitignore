@@ -77,3 +77,6 @@ WEEK_5/fhvhv/2021/01/part-00020-306919db-0876-428f-905f-097440521dac-c000.snappy
 WEEK_5/fhvhv/2021/01/part-00021-306919db-0876-428f-905f-097440521dac-c000.snappy.parquet
 WEEK_5/fhvhv/2021/01/part-00022-306919db-0876-428f-905f-097440521dac-c000.snappy.parquet
 WEEK_5/fhvhv/2021/01/part-00023-306919db-0876-428f-905f-097440521dac-c000.snappy.parquet
+WEEK_2/02_gcp/S&P500_companies.csv
+.gitignore
+WEEK_2/02_gcp/tests.py
