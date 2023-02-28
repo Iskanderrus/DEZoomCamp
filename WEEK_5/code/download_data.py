@@ -1,5 +1,6 @@
 import os
 import requests
+from time import sleep
 
 TAXI_TYPE = input('Which type of taxi to download? \n')
 YEAR = int(input('For what year do you nead the data? \n'))
@@ -7,7 +8,7 @@ YEAR = int(input('For what year do you nead the data? \n'))
 URL_SOURCE = 'https://d37ci6vzurychx.cloudfront.net/trip-data/'
 
 
-for month in range(4, 5): 
+for month in range(1, 13): 
     local_url = f'./WEEK_5/data/{TAXI_TYPE}/{str(YEAR)}/{month:02d}'
 
     if not os.path.exists(local_url):
@@ -20,5 +21,4 @@ for month in range(4, 5):
         open(f'{local_url}/{local_file_name}', "wb").write(response.content)
     except FileNotFoundError:
         print(f"File {local_file_name} not found on the server.")
-    else: 
-        break
+    sleep(20)
