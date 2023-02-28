@@ -2,8 +2,8 @@ import os
 import requests
 from time import sleep
 
-TAXI_TYPE = input('Which type of taxi to download? \n')
-YEAR = int(input('For what year do you nead the data? \n'))
+TAXI_TYPE = input('Which type of taxi to download? \n').strip()
+YEAR = int(input('For what year do you nead the data? \n').strip())
 
 URL_SOURCE = 'https://d37ci6vzurychx.cloudfront.net/trip-data/'
 
