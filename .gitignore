@@ -1143,3 +1143,13 @@ WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/part-00000-9072b638-
 WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/.part-00000-9072b638-e55e-43ab-abd9-e97e010f11cd-c000.snappy.parquet.crc
 WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/._SUCCESS.crc
 WEEK_5/data/reports/monthly_revenue_by_service_type.parquet/_SUCCESS
+WEEK_5/data/repoer/revenue/green/._SUCCESS.crc
+WEEK_5/data/repoer/revenue/green/.part-00000-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet.crc
+WEEK_5/data/repoer/revenue/green/.part-00001-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet.crc
+WEEK_5/data/repoer/revenue/green/.part-00002-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet.crc
+WEEK_5/data/repoer/revenue/green/.part-00003-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet.crc
+WEEK_5/data/repoer/revenue/green/part-00000-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet
+WEEK_5/data/repoer/revenue/green/part-00001-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet
+WEEK_5/data/repoer/revenue/green/part-00002-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet
+WEEK_5/data/repoer/revenue/green/part-00003-f196335b-dc18-4f4f-bda2-f9c4b9f4c804-c000.snappy.parquet
+WEEK_5/data/repoer/revenue/green/_SUCCESS
