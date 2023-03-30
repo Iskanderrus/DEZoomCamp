@@ -14,22 +14,22 @@ class ImdbSpiderSpider(CrawlSpider):
         yield scrapy.Request(url="https://www.imdb.com/search/title/?genres=fantasy&explore=title_type,genres", headers={"User_Agent": self.user_agent})
 
     rules = (
-        # Rule(
-        #     LinkExtractor(restrict_xpaths=('//div[@class="image"]/a')),
-        #     follow=True,
-        #     process_request="set_user_agent"
-        # ),
+        Rule(
+            LinkExtractor(restrict_xpaths=('//div[@class="image"]/a')),
+            follow=True,
+            process_request="set_user_agent"
+        ),
         Rule(
             LinkExtractor(restrict_xpaths=('//h3/a')),
             callback='parse_item',
             follow=True,
             process_request="set_user_agent"
         ),
-        # Rule(
-        #     LinkExtractor(restrict_xpaths=('(//a[@class="lister-page-next next-page"])[2]')),
-        #     follow=True,
-        #     process_request="set_user_agent"
-        # ),
+        Rule(
+            LinkExtractor(restrict_xpaths=('(//a[@class="lister-page-next next-page"])[2]')),
+            follow=True,
+            process_request="set_user_agent"
+        ),
     )
 
     def set_user_agent(self, request, response):
@@ -64,7 +64,7 @@ class ImdbSpiderSpider(CrawlSpider):
         }
 
 process = CrawlerProcess(settings={
-    'FEED_URI': 'films.csv', 
+    'FEED_URI': './data/films.csv', 
     'FEED_FORMAT': 'csv'
 })
 
