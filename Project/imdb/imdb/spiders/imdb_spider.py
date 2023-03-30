@@ -1,6 +1,7 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
+from scrapy.crawler import CrawlerProcess
 
 
 class ImdbSpiderSpider(CrawlSpider):
@@ -10,25 +11,25 @@ class ImdbSpiderSpider(CrawlSpider):
     user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 
     def start_requests(self):
-        yield scrapy.Request(url="https://www.imdb.com/search/title/?genres=comedy&genres=War&explore=title_type,genres", headers={"User_Agent": self.user_agent})
+        yield scrapy.Request(url="https://www.imdb.com/search/title/?genres=fantasy&explore=title_type,genres", headers={"User_Agent": self.user_agent})
 
     rules = (
-        Rule(
-            LinkExtractor(restrict_xpaths=('//div[@class="image"]/a')),
-            follow=True,
-            process_request="set_user_agent"
-        ),
+        # Rule(
+        #     LinkExtractor(restrict_xpaths=('//div[@class="image"]/a')),
+        #     follow=True,
+        #     process_request="set_user_agent"
+        # ),
         Rule(
             LinkExtractor(restrict_xpaths=('//h3/a')),
             callback='parse_item',
             follow=True,
             process_request="set_user_agent"
         ),
-        Rule(
-            LinkExtractor(restrict_xpaths=('(//a[@class="lister-page-next next-page"])[2]')),
-            follow=True,
-            process_request="set_user_agent"
-        ),
+        # Rule(
+        #     LinkExtractor(restrict_xpaths=('(//a[@class="lister-page-next next-page"])[2]')),
+        #     follow=True,
+        #     process_request="set_user_agent"
+        # ),
     )
 
     def set_user_agent(self, request, response):
@@ -55,9 +56,17 @@ class ImdbSpiderSpider(CrawlSpider):
             "country_of_origin": response.xpath('//div[@data-testid="title-details-section"]/ul/li[2]//a/text()').get(),
             "production_company": response.xpath(
                 '//div[@data-testid="title-details-section"]/ul/li[7]//div//a/text()').get(),
-            "budget_local_currency": (response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[1]').get()).split("(")[0].strip(),
+            "budget_local_currency": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[1]').get(),
             "gross_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[2]').get(),
             "opening_weekend_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[3]').get(),
             "gross_worldwide": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[5]').get(),
             "movie_url": response.url,
         }
+
+process = CrawlerProcess(settings={
+    'FEED_URI': 'films.csv', 
+    'FEED_FORMAT': 'csv'
+})
+
+process.crawl(ImdbSpiderSpider)
+process.start()
