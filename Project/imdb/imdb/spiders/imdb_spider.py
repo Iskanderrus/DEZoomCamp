@@ -57,8 +57,7 @@ class ImdbSpiderSpider(CrawlSpider):
             #     '//div[@data-testid="title-details-section"]/ul/li[7]//div//a/text()').get(),
             # "budget_local_currency": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[1]').get(),
             # "gross_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[2]').get(),
-            # "opening_weekend_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[3]').get(),
-            "gross_worldwide": response.xpath('//p[@class="sort-num_votes-visible"]/span[@name="nv"][2]/@data-value').get(),
+            "opening_weekend_us_canada": response.xpath('//p[@class="sort-num_votes-visible"]/span[@name="nv"][2]/@data-value').get(),
             "movie_url": response.urljoin(response.xpath('//h3/a/@href').get()),
         }
 
