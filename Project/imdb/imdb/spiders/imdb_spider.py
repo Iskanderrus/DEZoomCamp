@@ -19,15 +19,16 @@ class ImdbSpiderSpider(CrawlSpider):
             follow=True,
             process_request="set_user_agent"
         ),
-        Rule(
-            LinkExtractor(restrict_xpaths=('//h3/a')),
-            callback='parse_item',
-            follow=True,
-            process_request="set_user_agent"
-        ),
+        # Rule(
+        #     LinkExtractor(restrict_xpaths=('//h3/a')),
+            
+        #     follow=True,
+        #     process_request="set_user_agent"
+        # ),
         Rule(
             LinkExtractor(restrict_xpaths=('(//a[@class="lister-page-next next-page"])[2]')),
             follow=True,
+            callback='parse_item',
             process_request="set_user_agent"
         ),
     )
@@ -39,28 +40,26 @@ class ImdbSpiderSpider(CrawlSpider):
 
     def parse_item(self, response):
         yield {
-            "title": response.xpath('//h1/span/text()').get(),
-            "year": response.xpath('(//section/div/div/ul/li[@role="presentation"])[1]/a/text()').get(),
-            "age": response.xpath('(//section/div/div/ul/li[@role="presentation"])[2]/a/text()').get(),
-            "duration": ' '.join(response.xpath(
-                '((//div[@data-testid="title-techspecs-section"]/ul/li[1]/*)[2]/text())[1] | ((//div[@data-testid="title-techspecs-section"]/ul/li[1]/*)[2]/text())[3] | ((//div[@data-testid="title-techspecs-section"]/ul/li[1]/*)[2]/text())[5] | ((//div[@data-testid="title-techspecs-section"]/ul/li[1]/*)[2]/text())[7]').getall()),
-            "genre": response.xpath('//a/span[@class="ipc-chip__text"]/text()').get(),
-            "rating": response.xpath(
-                '//div[@class="sc-7b68ec71-0 fuKYWn sc-93323f1b-12 bmgiwi"]/div/div/a/span/div/div[2]/div/span[1]/text()').get(),
-            "user_reviews": response.xpath('//ul/li[1]/a/span/span[@class="score"]/text()').get(),
-            "critic_reviews": response.xpath('//ul/li[2]/a/span/span[@class="score"]/text()').get(),
-            "metascore": response.xpath('//span[@class="score-meta"]/text()').get(),
-            "oscar_nominations": response.xpath('//div[@data-testid="awards"]/ul/li/a/text()').get(),
-            "wins_and_nominations": response.xpath('//div[@data-testid="awards"]/ul/li/div/ul/li/span/text()').get(),
-            "director": response.xpath('//section[@data-testid="title-cast"]/ul/li[1]//a/text()').get(),
-            "country_of_origin": response.xpath('//div[@data-testid="title-details-section"]/ul/li[2]//a/text()').get(),
-            "production_company": response.xpath(
-                '//div[@data-testid="title-details-section"]/ul/li[7]//div//a/text()').get(),
-            "budget_local_currency": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[1]').get(),
-            "gross_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[2]').get(),
-            "opening_weekend_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[3]').get(),
-            "gross_worldwide": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[5]').get(),
-            "movie_url": response.url,
+            "title": response.xpath('//h3/a/text()').get(),
+            "year": response.xpath('//h3/span[2]/text()').get(),
+            "age": response.xpath('//p[@class="text-muted "]/span[1]/text()').get(),
+            "duration": response.xpath('//p[@class="text-muted "]/span[3]/text()').get(),
+            "genre": response.xpath('//p[@class="text-muted "]/span[5]/text()').get().strip(),
+            "votes": response.xpath('//p[@class="sort-num_votes-visible"]/span[@name="nv"][1]/text()').get(),
+            "description": response.xpath('//p[@class="text-muted"]/text()').get(),
+            "team": response.xpath('//div[@class="lister-item-content"]/p[3]/a[1]/text() | //div[@class="lister-item-content"]/p[3]/a[2]/text() | //div[@class="lister-item-content"]/p[3]/a[3]/text() | //div[@class="lister-item-content"]/p[3]/a[4]/text() | //div[@class="lister-item-content"]/p[3]/a[5]/text() | //div[@class="lister-item-content"]/p[3]/a[6]/text()').get(),
+            # "metascore": response.xpath('//span[@class="score-meta"]/text()').get(),
+            # "oscar_nominations": response.xpath('//div[@data-testid="awards"]/ul/li/a/text()').get(),
+            # "wins_and_nominations": response.xpath('//div[@data-testid="awards"]/ul/li/div/ul/li/span/text()').get(),
+            # "director": response.xpath('//section[@data-testid="title-cast"]/ul/li[1]//a/text()').get(),
+            # "country_of_origin": response.xpath('//div[@data-testid="title-details-section"]/ul/li[2]//a/text()').get(),
+            # "production_company": response.xpath(
+            #     '//div[@data-testid="title-details-section"]/ul/li[7]//div//a/text()').get(),
+            # "budget_local_currency": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[1]').get(),
+            # "gross_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[2]').get(),
+            # "opening_weekend_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[3]').get(),
+            "gross_worldwide": response.xpath('//p[@class="sort-num_votes-visible"]/span[@name="nv"][2]/@data-value').get(),
+            "movie_url": response.urljoin(response.xpath('//h3/a/@href').get()),
         }
 
 process = CrawlerProcess(settings={

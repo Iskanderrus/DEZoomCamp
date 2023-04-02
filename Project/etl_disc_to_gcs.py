@@ -10,15 +10,15 @@ import os
 
 @task
 def crawl_data(): 
-    date = datetime.now().strftime('%Y%m%d')
+    date = datetime.now().strftime('%Y%m%d')    
     process = CrawlerProcess(settings={
-    'FEED_URI': f'./data/{date}_films.csv', 
+    'FEED_URI': f'./Project/imdb/data/{date}_films.csv', 
     'FEED_FORMAT': 'csv'
     })
 
     process.crawl(ImdbSpiderSpider)
     process.start()
-    full_path = os.path.abspath(f'./data/{date}_films.csv')
+    full_path = os.path.abspath(f'./Project/imdb/data/{date}_films.csv')
     return full_path
 
 
@@ -35,6 +35,7 @@ def etl_disc_to_gcs():
 
     data_set = "./imdb/imdb/data/films.csv"
     df = fetch(crawl_data())
+    df.to_parquet('films.parquet')
 
 
 
