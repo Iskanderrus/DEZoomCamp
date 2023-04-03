@@ -44,8 +44,8 @@ class FinancialImdbSpider(CrawlSpider):
                 '//div[@data-testid="title-details-section"]/ul/li[6]//ul/li/a/text()').getall(),
             "budget_local_currency": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[1]').get(),
             "gross_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[2]').get(),
-            "opening_weekend_us_canada": response.xpath('(//section[@data-testid="BoxOffice"]//li[@role="presentation"]/div/ul/li[@role="presentation"]/span)[3]').get(),
-            "opening_weekend_date": response.xpath('(//section[@data-testid="BoxOffice"]//li[@role="presentation"]/div/ul/li[@role="presentation"]/span)[4]').get(),
+            "opening_weekend_us_canada": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[3]').get(),
+            "opening_weekend_date": response.xpath('(//div[@data-testid="title-boxoffice-section"]//div/ul/li/span/text())[4]').get(),
             "movie_url": response.urljoin(response.xpath('//h3/a/@href').get()),
         }
 

@@ -1218,3 +1218,4 @@ Project/data/films.csv
 data/films.csv
 Project/Project/imdb/data/20230402_films.csv
 Project/imdb/imdb/spiders/data/films.csv
+Project/imdb_financial/imdb_financial/spiders/data/films_financials.csv
