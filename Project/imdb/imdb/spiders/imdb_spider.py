@@ -2,7 +2,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.crawler import CrawlerProcess
-
+from time import sleep
 
 class ImdbSpiderSpider(CrawlSpider):
     name = "imdb_spider"
@@ -38,6 +38,7 @@ class ImdbSpiderSpider(CrawlSpider):
         return request
 
     def parse_item(self, response):
+        sleep(5)
         yield {
             "title": response.xpath('//h3/a/text()').get(),
             "year": response.xpath('//span[@class="lister-item-year text-muted unbold"]/text()').get(),
