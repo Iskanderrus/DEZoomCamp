@@ -3,7 +3,7 @@ from scrapy.crawler import CrawlerProcess
 from scrapy_selenium import SeleniumRequest
 
 
-class ComedySpider(scrapy.Spider):
+class HorrorSpider(scrapy.Spider):
     name = "horror"
 
     def start_requests(self):
@@ -43,5 +43,5 @@ process = CrawlerProcess(settings={
     'FEED_FORMAT': 'csv'
 })
 
-process.crawl(ComedySpider)
+process.crawl(HorrorSpider)
 process.start()
