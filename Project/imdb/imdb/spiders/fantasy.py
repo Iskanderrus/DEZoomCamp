@@ -3,12 +3,12 @@ from scrapy.crawler import CrawlerProcess
 from scrapy_selenium import SeleniumRequest
 
 
-class AdventureSpider(scrapy.Spider):
-    name = "adventure"
+class FantasySpider(scrapy.Spider):
+    name = "fantasy"
 
     def start_requests(self):
         yield SeleniumRequest(
-            url='https://www.imdb.com/search/title/?genres=adventure',
+            url='https://www.imdb.com/search/title/?genres=fantasy',
             wait_time=3,
             callback=self.parse
         )
@@ -39,9 +39,9 @@ class AdventureSpider(scrapy.Spider):
 
 
 process = CrawlerProcess(settings={
-    'FEED_URI': './data/adventure.csv',
+    'FEED_URI': './data/fantasy.csv',
     'FEED_FORMAT': 'csv'
 })
 
-process.crawl(AdventureSpider)
+process.crawl(FantasySpider)
 process.start()
