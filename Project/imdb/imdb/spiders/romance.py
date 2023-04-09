@@ -4,11 +4,11 @@ from scrapy_selenium import SeleniumRequest
 
 
 class ComedySpider(scrapy.Spider):
-    name = "sci-fi"
+    name = "romance"
 
     def start_requests(self):
         yield SeleniumRequest(
-            url='https://www.imdb.com/search/title/?genres=sci-fi',
+            url='https://www.imdb.com/search/title/?genres=romance',
             wait_time=3,
             callback=self.parse
         )
@@ -39,7 +39,7 @@ class ComedySpider(scrapy.Spider):
 
 
 process = CrawlerProcess(settings={
-    'FEED_URI': './data/sci-fi.csv',
+    'FEED_URI': './data/romance.csv',
     'FEED_FORMAT': 'csv'
 })
 

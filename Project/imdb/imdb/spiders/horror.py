@@ -4,7 +4,7 @@ from scrapy_selenium import SeleniumRequest
 
 
 class ComedySpider(scrapy.Spider):
-    name = "comedy"
+    name = "horror"
 
     def start_requests(self):
         yield SeleniumRequest(
