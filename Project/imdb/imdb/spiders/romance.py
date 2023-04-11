@@ -17,8 +17,11 @@ class RomanceSpider(scrapy.Spider):
         products = response.xpath('//div[@class="lister-item mode-advanced"]')
         for product in products:
             yield {
+                "popularity": response.xpath('.//h3[@class="lister-item-header"]/span[1]/text()').get(),
                 "title": response.xpath('.//h3/a/text()').get(),
+                "episode": response.xpath('.//h3/a[2]/text()').get(),
                 "year": response.xpath('.//span[@class="lister-item-year text-muted unbold"]/text()').get(),
+                "episode_year": response.xpath('.//span[@class="lister-item-year text-muted unbold"][2]/text()').get(),
                 "rating": response.xpath('.//div[@class="inline-block ratings-imdb-rating"]/strong/text()').get(),
                 "age": response.xpath('.//span[@class="certificate"]/text()').get(),
                 "duration": response.xpath('.//span[@class="runtime"]/text()').get(),
