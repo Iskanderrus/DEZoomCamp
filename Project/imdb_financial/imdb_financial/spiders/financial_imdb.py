@@ -40,11 +40,15 @@ class FinancialImdbSpider(CrawlSpider):
         yield {
             "title": response.xpath('//h1/span/text()').get(),
             "top_cast": response.xpath('//a[@data-testid="title-cast-item__actor"]/text()').getall(),
-            "director": response.xpath('//ul[@class="ipc-metadata-list ipc-metadata-list--dividers-all sc-bfec09a1-8 iiDmgX ipc-metadata-list--base"]/li[1]//a[contains(@href, "name")]/text()').get(),
-            "writer": response.xpath('//ul[@class="ipc-metadata-list ipc-metadata-list--dividers-all sc-bfec09a1-8 iiDmgX ipc-metadata-list--base"]/li[2]//a[contains(@href, "name")]/text()').get(),
+            "director": response.xpath('//ul[@class="ipc-metadata-list ipc-metadata-list--dividers-all sc-bfec09a1-8 '
+                                       'iiDmgX ipc-metadata-list--base"]/li[1]//a[contains(@href, "name")]/text('
+                                       ')').get(),
+            "writer": response.xpath('//ul[@class="ipc-metadata-list ipc-metadata-list--dividers-all sc-bfec09a1-8 '
+                                     'iiDmgX ipc-metadata-list--base"]/li[2]//a[contains(@href, "name")]/text()').get(),
             "country_of_origin": response.xpath('//a[contains(@href, "country_of_origin")]/text()').getall(),
             "language": response.xpath('//a[contains(@href, "language")]/text()').get(),
-            "release_date": response.xpath('//div[@class="ipc-metadata-list-item__content-container"]//a[contains(@href, "release")]/text()').get(),
+            "release_date": response.xpath('//div[@class="ipc-metadata-list-item__content-container"]//a[contains('
+                                           '@href, "release")]/text()').get(),
             "production_company": response.xpath(
                 '//li[@class="ipc-inline-list__item"]/a[contains(@href, "company")]/text()').getall(),
             "filming_locations": response.xpath(
