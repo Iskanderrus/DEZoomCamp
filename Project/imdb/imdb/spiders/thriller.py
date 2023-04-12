@@ -17,18 +17,18 @@ class ThrillerSpider(scrapy.Spider):
         products = response.xpath('//div[@class="lister-item mode-advanced"]')
         for product in products:
             yield {
-                "popularity": response.xpath('.//h3[@class="lister-item-header"]/span[1]/text()').get(),
-                "title": response.xpath('.//h3/a[1]/text()').get(),
-                "episode": response.xpath('.//h3/a[2]/text()').get(),
-                "year": response.xpath('.//span[@class="lister-item-year text-muted unbold"]/text()').get(),
-                "episode_year": response.xpath('.//span[@class="lister-item-year text-muted unbold"][2]/text()').get(),
-                "rating": response.xpath('.//div[@class="inline-block ratings-imdb-rating"]/strong/text()').get(),
-                "age": response.xpath('.//span[@class="certificate"]/text()').get(),
-                "duration": response.xpath('.//span[@class="runtime"]/text()').get(),
-                "genre": response.xpath('normalize-space(.//span[@class="genre"]/text())').get(),
-                "votes": response.xpath('.//p[@class="sort-num_votes-visible"]/span[@name="nv"][1]/text()').get(),
-                "description": response.xpath('normalize-space(.//p[@class="text-muted"]/text())').get(),
-                "movie_url": response.urljoin(response.xpath('.//h3/a/@href').get()),
+                "popularity": product.xpath('.//h3[@class="lister-item-header"]/span[1]/text()').get(),
+                "title": product.xpath('.//h3/a[1]/text()').get(),
+                "episode": product.xpath('.//h3/a[2]/text()').get(),
+                "year": product.xpath('.//span[@class="lister-item-year text-muted unbold"]/text()').get(),
+                "episode_year": product.xpath('.//span[@class="lister-item-year text-muted unbold"][2]/text()').get(),
+                "rating": product.xpath('.//div[@class="inline-block ratings-imdb-rating"]/strong/text()').get(),
+                "age": product.xpath('.//span[@class="certificate"]/text()').get(),
+                "duration": product.xpath('.//span[@class="runtime"]/text()').get(),
+                "genre": product.xpath('normalize-space(.//span[@class="genre"]/text())').get(),
+                "votes": product.xpath('.//p[@class="sort-num_votes-visible"]/span[@name="nv"][1]/text()').get(),
+                "description": product.xpath('normalize-space(.//p[@class="text-muted"]/text())').get(),
+                "movie_url": response.urljoin(product.xpath('.//h3/a/@href').get()),
             }
 
         next_page = response.xpath('//a[@class="lister-page-next next-page"]/@href').get()
