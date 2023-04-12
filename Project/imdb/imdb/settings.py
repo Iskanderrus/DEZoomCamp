@@ -92,8 +92,8 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
 
-# SPIDER_MIDDLEWARES = {
-#     'imdb.middlewares.deltafetch.DeltaFetch': 100,
-# }
+SPIDER_MIDDLEWARES = {
+    'imdb.middlewares.deltafetch.DeltaFetch': 100,
+}
 
-# DELTAFETCH_ENABLED = True
+DELTAFETCH_ENABLED = True
