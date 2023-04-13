@@ -16,7 +16,7 @@ def fetch(file_name):
 
 @task()
 def clean_films(df):
-    df = pd.read_csv('action_01.csv', low_memory=True)
+    df = pd.read_csv(df, low_memory=True)
     df['popularity'] = df.loc[:, 'popularity'].apply(lambda x: x.strip('.')).apply(lambda x: x.replace(',', ''))
     df[['title', 'episode', 'age', 'duration', 'genre', 'votes', 'description']] = df.loc[:,
                                                                                    ['title', 'episode', 'age',
@@ -37,12 +37,12 @@ def clean_films(df):
     df = df[df['year'].notna()]
     df['year'] = pd.to_numeric(df['year'], downcast='integer')
     df['episode_year'] = pd.to_numeric(df['episode_year'], downcast='float')
-    df['rating'].fillna('Not Rated', inplace=True)
-    df['episode'].fillna('No Episodes', inplace=True)
-    df['age'].fillna('Not Rated', inplace=True)
-    df['duration'] = df['duration'].fillna(0)
-    df['duration'] = pd.to_numeric(df['duration'], downcast='integer')
-    df['description'].fillna('No description', inplace=True)
+    # df['rating'].fillna('Not Rated', inplace=True)
+    # df['episode'].fillna('No Episodes', inplace=True)
+    # df['age'].fillna('Not Rated', inplace=True)
+    # df['duration'] = df['duration'].fillna(0)
+    # df['duration'] = pd.to_numeric(df['duration'], downcast='integer')
+    # df['description'].fillna('No description', inplace=True)
     return df
 
 

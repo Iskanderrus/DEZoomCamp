@@ -19,6 +19,7 @@ class ActionSpider(scrapy.Spider):
             yield {
                 "popularity": product.xpath('.//h3[@class="lister-item-header"]/span[1]/text()').get(),
                 "title": product.xpath('.//h3/a[1]/text()').get(),
+                "main_genre": self.name,
                 "episode": product.xpath('.//h3/a[2]/text()').get(),
                 "year": product.xpath('.//span[@class="lister-item-year text-muted unbold"]/text()').get(),
                 "episode_year": product.xpath('.//span[@class="lister-item-year text-muted unbold"][2]/text()').get(),
@@ -42,7 +43,7 @@ class ActionSpider(scrapy.Spider):
 
 
 process = CrawlerProcess(settings={
-    'FEED_URI': './data/action.csv',
+    'FEED_URI': f'./data/{ActionSpider.name}.csv',
     'FEED_FORMAT': 'csv'
 })
 
