@@ -16,7 +16,7 @@ from sci_fi import SciFiSpider
 from superhero import SuperheroSpider
 from thriller import ThrillerSpider
 
-action = ActionSpider()
+# action = ActionSpider()
 action_comedy = ActionComedySpider()
 adventure = AdventureSpider()
 animation = AnimationSpider()
@@ -33,7 +33,7 @@ superhero = SuperheroSpider()
 thriller = ThrillerSpider()
 
 genres = {
-    'action': action,
+    # 'action': action,
     'action_comedy': action_comedy,
     'adventure': adventure,
     'animation': animation,
@@ -50,12 +50,20 @@ genres = {
     'thriller': thriller,
 }
 
-for key, value in genres:
-    print(f'Crawler {key} is being run....')
-    process = CrawlerProcess(settings={
-        'FEED_URI': f'./data/{key}.csv',
-        'FEED_FORMAT': 'csv'
-    })
+process = CrawlerProcess()
+process.crawl(action_comedy)
+process.crawl(adventure)
 
-    process.crawl(value)
-    process.start(stop_after_crawl=False)
+process.start(stop_after_crawl=False)
+
+
+
+# for key, value in genres:
+#     print(f'Crawler {key} is being run....')
+#     process = CrawlerProcess(settings={
+#         'FEED_URI': f'./data/{key}.csv',
+#         'FEED_FORMAT': 'csv'
+#     })
+#
+#     process.crawl(value)
+# process.start(stop_after_crawl=False)

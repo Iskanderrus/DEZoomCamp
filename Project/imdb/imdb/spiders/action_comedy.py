@@ -42,10 +42,10 @@ class ActionComedySpider(scrapy.Spider):
             )
 
 
-# process = CrawlerProcess(settings={
-#     'FEED_URI': './data/action_comedy.csv',
-#     'FEED_FORMAT': 'csv'
-# })
-#
-# process.crawl(ActionComedySpider)
-# process.start()
+process = CrawlerProcess(settings={
+    'FEED_URI': './data/action_comedy.csv',
+    'FEED_FORMAT': 'csv'
+})
+
+process.crawl(ActionComedySpider)
+process.start()

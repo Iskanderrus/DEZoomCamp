@@ -16,7 +16,7 @@ def fetch(file_name):
 
 @task()
 def clean_films(df):
-    df = pd.read_csv('action.csv', low_memory=True)
+    df = pd.read_csv('action_01.csv', low_memory=True)
     df['popularity'] = df.loc[:, 'popularity'].apply(lambda x: x.strip('.')).apply(lambda x: x.replace(',', ''))
     df[['title', 'episode', 'age', 'duration', 'genre', 'votes', 'description']] = df.loc[:,
                                                                                    ['title', 'episode', 'age',
