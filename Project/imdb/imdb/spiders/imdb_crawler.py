@@ -57,4 +57,4 @@ for key, value in genres:
     })
 
     process.crawl(value)
-    process.start()
+    process.start(stop_after_crawl=False)
