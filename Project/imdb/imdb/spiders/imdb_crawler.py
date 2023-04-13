@@ -51,6 +51,7 @@ genres = {
 }
 
 for key, value in genres:
+    print(f'Crawler {key} is being run....')
     process = CrawlerProcess(settings={
         'FEED_URI': f'./data/{key}.csv',
         'FEED_FORMAT': 'csv'
