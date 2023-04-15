@@ -8,7 +8,7 @@ class SuperheroSpider(scrapy.Spider):
 
     def start_requests(self):
         yield SeleniumRequest(
-            url='https://www.imdb.com/search/title/?genres=superhero',
+            url='https://www.imdb.com/search/keyword/?keywords=superhero&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=a581b14c-5a82-4e29-9cf8-54f909ced9e1&pf_rd_r=E4GMMRJXJ9MWGWW9R0SM&pf_rd_s=center-5&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_pr5_i_3',
             wait_time=3,
             callback=self.parse
         )
