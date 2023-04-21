@@ -34,7 +34,7 @@ class SuperheroSpider(scrapy.Spider):
 
         next_page = response.xpath('//a[@class="lister-page-next next-page"]/@href').get()
         if next_page:
-            absolute_url = f"https://www.imdb.com{next_page}"
+            absolute_url = f"https://www.imdb.com/search/keyword/{next_page}"
             yield SeleniumRequest(
                 url=absolute_url,
                 wait_time=3,
