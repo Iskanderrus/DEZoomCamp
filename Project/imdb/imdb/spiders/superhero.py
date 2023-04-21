@@ -14,7 +14,7 @@ class SuperheroSpider(scrapy.Spider):
         )
 
     def parse(self, response, **kwargs):
-        products = response.xpath('//div[@class="lister-item mode-advanced"]')
+        products = response.xpath('//div[@class="lister-item mode-detail"]')
         for product in products:
             yield {
                 "popularity": product.xpath('.//h3[@class="lister-item-header"]/span[1]/text()').get(),
