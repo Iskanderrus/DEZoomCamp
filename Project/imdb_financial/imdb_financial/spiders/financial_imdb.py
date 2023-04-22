@@ -1,11 +1,7 @@
-from shutil import which
-import time
 import scrapy
-from scrapy.crawler import CrawlerProcess
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from scrapy.crawler import CrawlerProcess
 
 
 class FinancialImdbSpider(CrawlSpider):
@@ -13,36 +9,16 @@ class FinancialImdbSpider(CrawlSpider):
     allowed_domains = ['www.imdb.com']
     user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 
-    # def start_requests(self):
-    #     yield scrapy.Request(url="https://www.imdb.com/search/keyword/?keywords=superhero",
-    #                          headers={"User_Agent": self.user_agent})
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-
-        chrome_path = which('./chromedriver')
-
-        driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
-        driver.get('https://www.imdb.com/search/keyword/?keywords=superhero')
-
-        # define maximum window size to enable scrapy reading maximum number of values
-        driver.set_window_size(1920, 1080)
-
-        # find and press RUB button
-        box = driver.find_elements_by_class_name('global-sprite button-remove')
-        box.click()
-
-        self.html = driver.page_source
-        driver.close()
+    def start_requests(self):
+        yield scrapy.Request(url="https://www.imdb.com/search/keyword/?sort=moviemeter,asc&mode=detail&page=1",
+                             headers={"User_Agent": self.user_agent})
 
     rules = (
-        # Rule(
-        #     LinkExtractor(restrict_xpaths='//div[@class="image"]/a'),
-        #     follow=True,
-        #     process_request="set_user_agent"
-        # ),
+        Rule(
+            LinkExtractor(restrict_xpaths='//div[@class="table-cell primary"]/a'),
+            follow=True,
+            process_request="set_user_agent"
+        ),
         Rule(
             LinkExtractor(restrict_xpaths='//h3/a'),
             follow=True,
