@@ -53,7 +53,7 @@ class FinancialsSpider(scrapy.Spider):
 
 
 process = CrawlerProcess(settings={
-    'FEED_URI': './data/films_financials_new.csv',
+    'FEED_URI': './data/films_financials.csv',
     'FEED_FORMAT': 'csv'
 })
 
