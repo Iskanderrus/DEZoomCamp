@@ -14,8 +14,10 @@ class FinancialsSpider(scrapy.Spider):
 
     def start_requests(self):
         for d in self.start_urls:
-            yield Request(d, callback=self.parse,
-                          headers={"User-Agent": self.user_agent})
+            yield Request(d,
+                          callback=self.parse,
+                          headers={"User-Agent": self.user_agent}
+                          )
 
     def parse(self, response):
         yield {
